@@ -75,7 +75,7 @@ public class RailTicketsPresenter implements RailTicketsContract.Presenter{
                 ProductData productData = new ProductData();
                 if (!datas[1].equals("")) {
                     if (datas[2].length() >= 30) {
-                        int SpaceIndex = datas[1].indexOf(" ", 15);
+                        int SpaceIndex = datas[2].indexOf(" ", 15);
                         String CorrectedLibelle = new StringBuilder(datas[2]).insert(SpaceIndex, "\n").toString();
                         productData.setLibelle(CorrectedLibelle);
                     } else {

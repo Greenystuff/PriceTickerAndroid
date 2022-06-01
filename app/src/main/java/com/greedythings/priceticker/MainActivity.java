@@ -28,11 +28,9 @@ import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.tabs.TabLayout;
 import com.greedythings.priceticker.Utils.SharedPrefsHelper;
 import com.greedythings.priceticker.Utils.ViewPagerAdapter;
-import com.greedythings.priceticker.Features.A4Tickets.A4TicketsFragment;
 import com.greedythings.priceticker.Features.RailTickets.RailTicketsFragment;
 import com.greedythings.priceticker.Features.WallTickets.WallTicketsFragment;
 
-import butterknife.BindView;
 
 public class MainActivity extends AppCompatActivity implements MainContract.View{
 
@@ -51,7 +49,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
     private WallTicketsFragment wallTicketsFragment;
     private RailTicketsFragment railTicketsFragment;
-    private A4TicketsFragment a4TicketsFragment;
 
     private MainContract.Presenter presenter;
     private String IpAdress = "";
@@ -118,19 +115,17 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         setSupportActionBar(toolbar);
 
         viewPager = findViewById(R.id.view_pager);
-        viewPager.setOffscreenPageLimit(3);
+        viewPager.setOffscreenPageLimit(2);
         tabLayout = findViewById(R.id.tab_layout);
 
         wallTicketsFragment = new WallTicketsFragment();
         railTicketsFragment = new RailTicketsFragment();
-        a4TicketsFragment = new A4TicketsFragment();
 
         tabLayout.setupWithViewPager(viewPager);
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), 0);
         viewPagerAdapter.addFragment(wallTicketsFragment, "Mural");
         viewPagerAdapter.addFragment(railTicketsFragment, "Rails");
-        viewPagerAdapter.addFragment(a4TicketsFragment, "A4");
         viewPager.setAdapter(viewPagerAdapter);
 
         SetMainLayoutVisibility(false);
